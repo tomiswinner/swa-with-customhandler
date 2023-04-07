@@ -1,7 +1,8 @@
 To `swa start` for hosting server locally,
 
 
-run `swa start --host=127.0.0.1 --port 3000 --api-location ./api --port 4280 --api-port 7028`.
+run ` swa start --host=127.0.0.1  --port 4280 --api-port 7071`.
+You have to start local App Functions with `func start` command.
 
 
 
