@@ -3,28 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index Page</title>
+  <title>My Static Web App</title>
 </head>
 <body>
-  <button id="sendRequest">Send Request</button>
-  <p>Hello, here is your response:</p>
-  <p id="responseMessage"></p>
+  <h1>Hello, here is your response:</h1>
+  <button id="getMessageButton">Get Message</button>
+  <p id="messageDisplay"></p>
 
   <script>
-    document.getElementById('sendRequest').addEventListener('click', async () => {
+    const getMessageButton = document.getElementById('getMessageButton');
+    const messageDisplay = document.getElementById('messageDisplay');
+
+    getMessageButton.addEventListener('click', async () => {
       try {
-        const response = await fetch('/api/message1', {
-          method: 'GET'
-        });
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
+        const response = await fetch('/api/message1');
         const data = await response.json();
-        document.getElementById('responseMessage').textContent = data.message;
+
+        messageDisplay.innerText = data.message1;
       } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
+        console.error('Error fetching message:', error);
       }
     });
   </script>
